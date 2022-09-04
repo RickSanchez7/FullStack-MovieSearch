@@ -51,6 +51,10 @@ if (process.env.NODE_ENV === 'production') {
       path.resolve(__dirname, 'react-movie-db', 'build', 'index.html')
     );
   });
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
 }
 
 export default app;
