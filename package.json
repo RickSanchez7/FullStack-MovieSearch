@@ -15,7 +15,7 @@
     "client": "npm start --prefix react-movie-db",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-movie-db && npm run build --prefix react-movie-db && npm run build",
-    "railway-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-movie-db && npm run build --prefix react-movie-db && npm run build"
+    "railway-postbuild": "npm install --prefix react-movie-db && npm run build --prefix react-movie-db && npm run build"
   },
   "keywords": [],
   "author": "",
