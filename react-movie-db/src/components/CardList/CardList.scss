@@ -1,0 +1,92 @@
+@import '../../sass/styles';
+
+.cardList {
+  margin: 1rem;
+  border: 1px solid rgba($color-grey-light-1, 1);
+  padding-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: $shadow-light;
+  max-width: 150px;
+  min-width: 150px;
+  overflow: hidden;
+  position: relative;
+
+  @media screen and (max-width: 800px) {
+    max-width: 125px;
+    min-width: 125px;
+  }
+
+  img {
+    height: 175px;
+    min-width: 150px;
+    max-width: 150px;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    @media screen and (max-width: 800px) {
+      height: 150px;
+      min-width: 125px;
+      max-width: 125px;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    width: 4.5rem;
+    line-height: 4rem;
+    text-align: center;
+    background: $color-dark-primary;
+    border-radius: 50%;
+    border: solid 2px;
+    position: absolute;
+    top: 15rem;
+    left: 5%;
+
+    @media screen and (max-width: 1000px) {
+      top: 17.5rem;
+    }
+
+    @media screen and (max-width: 800px) {
+      top: 16rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      top: 17.5rem;
+    }
+  }
+
+  .favorite-movie {
+    transform: scale(2.5);
+    margin-top: 1.5rem;
+    margin-left: 125px;
+    z-index: 8;
+    color: $color-primary;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @media screen and (max-width: 800px) {
+      margin-left: 100px;
+    }
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0.75rem 0.75rem;
+
+    @media screen and (max-width: 800px) {
+      margin: 0.5rem 0.75rem 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin-top: 0.75rem;
+      font-size: 1.4rem;
+    }
+  }
+}

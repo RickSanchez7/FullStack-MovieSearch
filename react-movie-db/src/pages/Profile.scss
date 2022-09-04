@@ -1,0 +1,111 @@
+@import '../sass/styles';
+
+@mixin formMix {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 600;
+  input {
+    font-size: 2rem;
+    height: 4rem;
+    border-radius: 0.4rem;
+    border-width: 1px;
+    border-color: $color-grey-light-1;
+    padding-left: 1rem;
+    transition: all 0.1s linear;
+    &:focus {
+      border-color: #3369ff;
+      outline: 0 none;
+    }
+  }
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-info {
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    h2 {
+      font-weight: 600;
+      font-size: 3rem;
+      margin-top: 5rem;
+    }
+
+    .name {
+      @include formMix();
+      font-size: 1.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .email {
+      @include formMix();
+      font-size: 1.7rem;
+      margin-top: 1rem;
+    }
+
+    .password {
+      @include formMix();
+      font-size: 1.7rem;
+      margin-top: 1rem;
+    }
+
+    .confirm-password {
+      @include formMix();
+      font-size: 1.7rem;
+      margin-top: 1rem;
+    }
+
+    .profile-message {
+      margin-top: 0.5rem;
+      color: #29ab87;
+      font-size: 2rem;
+      text-transform: capitalize;
+    }
+
+    .profile-button {
+      margin-top: 2rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: 20rem;
+      border: none;
+      outline: none;
+      border-radius: 0.5rem;
+      padding: 0.7rem;
+      text-decoration: none;
+      font-size: 2rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      color: $color-white;
+      background-color: #3369ff;
+      letter-spacing: 0.1rem;
+      box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
+        inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.2s linear;
+
+      &:hover {
+        background-color: #113eb8;
+      }
+
+      &:disabled,
+      &[disabled] {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+      }
+
+      &:active {
+        box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
+          inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+}

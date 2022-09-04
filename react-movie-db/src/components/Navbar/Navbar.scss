@@ -1,0 +1,144 @@
+@import '../../sass/styles';
+
+.header {
+  background: $color-primary-dark !important;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid $color-primary;
+
+  .nav {
+    display: flex;
+    text-transform: capitalize;
+    width: 600px;
+    justify-content: space-around;
+
+    @media screen and (max-width: 800px) {
+      width: 200px;
+    }
+
+    &-title {
+      font-size: 2.5rem;
+      color: $color-primary-light;
+      font-weight: 800;
+    }
+    &-links {
+      display: flex;
+      align-items: center;
+      font-size: 1.7rem;
+      letter-spacing: 0.1rem;
+
+      @media screen and (max-width: 800px) {
+        visibility: hidden;
+        position: fixed;
+        flex-direction: column;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        background-color: $color-white;
+        margin-top: auto;
+        margin-bottom: auto;
+        z-index: 10;
+        transition: all 0.3s;
+      }
+
+      & a {
+        color: $color-white;
+        justify-content: space-around;
+        padding: 0 1rem;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        font-size: 2rem;
+        transition: all 0.3s linear;
+
+        @media screen and (max-width: 800px) {
+          color: $color-primary-light;
+          margin-top: 2rem;
+          font-size: 5rem;
+        }
+        &:hover {
+          color: $color-primary-light;
+          @media screen and (max-width: 800px) {
+            color: $color-primary-dark-2;
+          }
+        }
+      }
+    }
+
+    .active {
+      @media screen and (max-width: 800px) {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  .btn-nav {
+    background-color: transparent;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2rem;
+    z-index: 20;
+    cursor: pointer;
+
+    .hamburger {
+      display: none;
+      position: relative;
+      z-index: 20;
+
+      @media screen and (max-width: 800px) {
+        display: inline-block;
+        top: 2rem;
+        width: 3rem;
+        height: 2px;
+        background-color: transparent;
+        transition: all 0.2s;
+
+        &::before {
+          content: '';
+          display: block;
+          top: 2rem;
+          width: 3rem;
+          height: 2px;
+          background-color: $color-white;
+          transition: all 0.3s;
+        }
+
+        &::after {
+          content: '';
+          width: 1.5rem;
+          display: block;
+          height: 2px;
+          background-color: $color-white;
+          position: absolute;
+          top: 0.75rem;
+          right: 0;
+          transition: all 0.3s;
+        }
+      }
+    }
+
+    .active::before {
+      @media screen and (max-width: 800px) {
+        background-color: $color-primary-dark-2;
+        transform: rotate(-45deg);
+      }
+    }
+    .active::after {
+      @media screen and (max-width: 800px) {
+        background-color: $color-primary-dark-2;
+        top: 0;
+        width: 3rem;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.selected {
+  text-decoration: underline;
+}
