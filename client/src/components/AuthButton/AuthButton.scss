@@ -1,0 +1,111 @@
+@import '../../sass/styles';
+
+@mixin transition {
+  transition: all 0.2s linear;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 4rem;
+
+  .auth-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background: transparent;
+    color: $color-white;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @include transition();
+
+    .profile-name {
+      margin-left: 5px;
+
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
+
+    .triangules {
+      padding-top: 0.5rem;
+      margin-left: 0.5rem;
+      transition: all 0.2s linear;
+    }
+
+    .spin {
+      transform: rotate(180deg);
+    }
+  }
+
+  .auth-links {
+    position: absolute;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $color-primary-dark;
+    width: 13rem;
+    top: 4rem;
+    border-radius: 5px;
+    border: 1px solid $color-primary;
+    overflow: hidden;
+    box-shadow: $shadow-dark;
+    z-index: 9;
+    transition: visibility, opacity 0.2s linear;
+
+    .profile-link {
+      width: 10rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      color: $color-white;
+      text-align: center;
+      letter-spacing: 0.1rem;
+      background: $color-primary-dark;
+      line-height: 4rem;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+
+      @include transition();
+    }
+
+    .signout-button {
+      width: 10rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      background: $color-primary-dark;
+      border: none;
+      color: $color-white;
+      line-height: 4rem;
+      letter-spacing: 0.1rem;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+
+      @include transition();
+    }
+  }
+
+  .activeAuth {
+    visibility: visible;
+    opacity: 1;
+  }
+}

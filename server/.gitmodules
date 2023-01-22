@@ -1,0 +1,3 @@
+[submodule "react-movie-db"]
+	path = react-movie-db
+	url = https://github.com/RickSanchez7/MovieSeach-DB.git
