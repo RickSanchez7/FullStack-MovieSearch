@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { FaArrowLeft, FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 import Cast from '../components/Cast/Cast';
 import Carousel from '../components/Carousel/Carousel';
@@ -14,9 +14,9 @@ import './SingleShow.scss';
 import AddFavoriteMovie from '../components/AddFavoriteMovie/AddFavoriteMovie';
 
 const SingleShow = () => {
-  const params = window.location.pathname.split('/');
-  const mediaType = params[2];
-  const id = params[3];
+  const params = useParams();
+  let mediaType = params.media;
+  let id = params.id;
 
   const [show, setShow] = useState('');
   const [cast, setCast] = useState([]);
