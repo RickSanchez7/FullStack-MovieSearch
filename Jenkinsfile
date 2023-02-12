@@ -6,13 +6,6 @@ pipeline {
                 sh "npm run install"
             }
         }
-				stage('echo') {
-            steps {
-                sh 'ls'
-								sh 'ls ./client'
-								sh 'ls ./server'
-            }
-        }
         stage('build') {
             steps {
                 sh "npm run build"
@@ -21,6 +14,7 @@ pipeline {
        	stage('Deploy') {
             steps {
                 withCredentials([file(credentialsId: 'lightsail-pem', variable: 'PEM_FILE')]) {
+										sh 'tar -czvf app.tar.gz ./server/build'
                     sh "scp -o StrictHostKeyChecking=no -i ${PEM_FILE} app.tar.gz ubuntu@15.237.53.215:~/movie-search/server/app.tar.gz"
                 }
                 sshPublisher(
