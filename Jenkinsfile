@@ -3,12 +3,18 @@ pipeline {
     stages {
         stage('install') {
             steps {
-                sh "npm run install"
+                sh "npx run install"
+            }
+        }
+				stage('echo') {
+            steps {
+                sh 'ls'
+								sh 'ls ./client'
             }
         }
         stage('build') {
             steps {
-                sh "npm run build"
+                sh "npx run build"
             }
         }
        	stage('Deploy') {
