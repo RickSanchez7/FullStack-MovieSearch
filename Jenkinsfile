@@ -15,30 +15,9 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'lightsail-pem', variable: 'PEM_FILE')]) {
 										sh 'tar -czvf app.tar.gz ./server/build'
-                    sh "scp -o StrictHostKeyChecking=no -i ${PEM_FILE} app.tar.gz ubuntu@15.237.53.215:~/movie-search/server/app.tar.gz"
+										sh "scp -o StrictHostKeyChecking=no -i ${PEM_FILE} app.tar.gz ubuntu@15.237.53.215:~/app.tar.gz"
+                    sh "ssh -o StrictHostKeyChecking=no -i ${PEM_FILE} ubuntu@15.237.53.215 'tar -xzvf app.tar.gz -C movie-search && pm2 reload movie-search'"
                 }
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'Lightsail',
-                            usePemFile: true,
-                            pemFileVariable: 'PEM_FILE',
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'app.tar.gz',
-                                    removePrefix: '',
-                                    execCommand: '''
-                                        tar -xzvf app.tar.gz
-                                        pm2 start movie-search
-                                    '''
-                                )
-                            ],
-                            usePromotionTimestamp: false,
-                            useWorkspaceInPromotion: false,
-                            cleanRemote: true
-                        )
-                    ]
-                )
             }
         }
     }
